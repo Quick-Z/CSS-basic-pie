@@ -1,71 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-	
-		.pie {
-			width: 100px;
-			height: 100px;
-			border-radius: 50%;
-			background: #1d365d;
-			background-image: linear-gradient(to right, transparent 50%, #ff2d51 50%);
-			position: relative;
-			overflow: hidden;
-		}
-		.inner-pie {
-			content: '';
-			display: block;
-			margin-left: 50%;
-			height: 100%;
-			background-color: inherit;
-			transform-origin: 0 50%;
-			border-radius: 0 100% 100% 0 / 50%;
-			transition: all 0.3s ease;
-		}
-		.pie-num {
-			width: 80%;
-			height: 80%;
-			background: #fff;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			border-radius: 50%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 20px;
-			font-weight: 600;
-			color: #ff2d51;
-		}
-
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>饼图</title>
+    <style>
+    
+        .pie {
+            width: 200px;
+            height: 200px;
+            background-color: #1d365d;
+            border-radius: 50%;
+            background-image: linear-gradient(to right, transparent 50%, #ff2d51 50%);
+        }
+        .pie::before {
+            content: '';
+            display: block;
+            margin-left: 50%;
+            height: 100%;
+            background-color: #ff2d51;
+            border-radius: 0 100% 100% 0 / 50%;
+            transform-origin: left;
+            transform: rotate(.1turn);
+        }
+    
+    </style>
 </head>
 <body>
-	<div class="pie" id="pie">
-		<div class="inner-pie" id="innerPie" data-percent="40"></div>
-		<div class="pie-num">40%</div>
-	</div>
+    
+    <div class="pie"></div>
 
-	<script>
-		var percent = innerPie.getAttribute('data-percent');
 
-		var t_percent = percent % 100;
-		if(t_percent >= 0) {
-			percentage(t_percent);
-		} else {
-			percentage( 100 + t_percent);
-		}
-
-		function percentage(i) {
-			if (i >= 0 && i <= 50) {
-				innerPie.style.cssText = `transform: rotate(${i / 100}turn); background-color: #1d365d;`;
-			} else if (i > 50 && i <= 100 ) {
-				innerPie.style.cssText = `transform: rotate(${(i - 50) / 100}turn); background-color: #ff2d51;`;
-			}
-		}
-	</script>
 </body>
 </html>
